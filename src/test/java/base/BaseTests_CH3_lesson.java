@@ -1,29 +1,31 @@
 package base;
 
-import Pages.HomePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
-public class BaseTests {
+public class BaseTests_CH3_lesson {
     private WebDriver driver;
-    protected HomePage homePage;
 
     public void setUp (){
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/");
-        homePage = new HomePage(driver);
 
+        List<WebElement> links = driver.findElements(By.tagName("a"));
+        System.out.println(links.size());
+//        WebElement inputsLink = driver.findElement(By.linkText("Inputs"));
+//        inputsLink.click();
+        System.out.println(driver.getTitle());
+//        driver.manage().window().setSize(new Dimension(375, 812)); // opens window with defined dimensions
         driver.quit();
     }
 
     public static void main (String args[]){
-        BaseTests test = new BaseTests();
+        BaseTests_CH3_lesson test = new BaseTests_CH3_lesson();
         test.setUp();
 
 

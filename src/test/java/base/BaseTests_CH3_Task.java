@@ -13,19 +13,21 @@ public class BaseTests_CH3_Task {
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver = new ChromeDriver();
+
+        // TODO: 1. Go to https://the-internet.herokuapp.com/
         driver.get("https://the-internet.herokuapp.com/");
 
-        //1. Click on "Shifting content"
+        // TODO: 2. Click on "Shifting content" link
         WebElement shiftingContentLink = driver.findElement(By.linkText("Shifting Content"));
         shiftingContentLink.click();
 
-        //2. Click on "Example 1: Menu Element"
+        // TODO: 3. Click on "Example 1: Menu Element" link
         WebElement example1 = driver.findElement(By.linkText("Example 1: Menu Element"));
         example1.click();
 
-        //3. Print how many menu elements have appeared
-        List<WebElement> links = driver.findElements(By.xpath("*//div/ul/li/a"));
-        System.out.println(links.size());
+        // TODO: 4. Print how many "Menu" elements have appeared
+        List<WebElement> menuItems = driver.findElements(By.tagName("li")); //By.xpath("//*/li")
+        System.out.println("Number of Menu items - " + menuItems.size());
 
         driver.quit();
     }
